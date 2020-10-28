@@ -1,0 +1,311 @@
+body {
+    margin: 0;
+}
+
+
+h1,h2,h3,h4,h5,h6 {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+
+}
+
+/*Header
+=========*/
+
+.header__item {
+    align-items: flex-end;
+    text-align: end;
+}
+
+.header__link.col{
+    font-size: 18px !important;
+    align-items: flex-end;
+}
+
+.header__link.col i {
+    font-size: 14px !important;
+    margin-right: 15px;
+}
+
+.header__link.col i {
+    color: #6c6969;
+}
+
+.header__link:hover {
+    color: #ea2222;
+    text-decoration: none;
+    transition: .2s linear;
+}
+
+.header__icon {
+    align-items: center;
+    text-align: center;
+}
+
+/*Icon
+===========*/
+
+.icon__header {
+    width: 18px;
+    height: 18px;
+    opacity: .3;
+    margin-right: 5px;
+
+    transition: .2s linear;
+}
+
+.icon__header:hover {
+    opacity: 1;
+    fill: #ea2222;
+}
+
+.icon__LogIn {
+    width: 20px;
+    height: 16px;
+    margin-left: -5px;
+    padding-right: 5px;
+}
+
+/*Button, Form
+===========*/
+
+.btn:focus,.btn:active {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.btn__login {
+    border-color: #454444;
+}
+
+.btn__login:hover {
+    border-color: #000;
+}
+
+.form-control {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/*Position
+=============*/
+
+.position-absolute {
+    right: 7px;
+    top: 7px;
+}
+
+.position-absolute:hover {
+    transition: .2s linear;
+    color: #ea2222 !important;
+    text-decoration: none;
+}
+
+/*Nav
+=========*/
+
+.nav__link:hover {
+    transition: .2s linear;
+    color: #ea2222 !important;
+    text-decoration: none;
+}
+
+/*Section
+===========*/
+
+.section__inner {
+    background-image: url("images/bg__section.jpg");
+    background-size: cover;
+    height: 450px;
+    border-radius: 15px;
+}
+
+/*Rent
+===========*/
+
+.rent__link {
+    flex-direction: column;
+}
+
+.rent__img {
+    width: 400px;
+    height: 150px;
+    border-radius: 10px;
+}
+
+.rent__item {
+    overflow: hidden;
+}
+
+/*Directory
+==============*/
+
+.directory__photo {
+    height: 150px;
+    position: relative;
+    overflow: hidden;
+}
+
+.directory__img {
+    position: absolute;
+    top: 50%;
+    right: -70%;
+    z-index: 1;
+    transform: translateY(-50%);
+}
+
+.directory__title {
+    font-size: 14px;
+    margin-bottom: 14px;
+    color: rgba(0,0,0,.56);
+    text-decoration: none !important;
+}
+
+.directory__title:hover {
+    color: rgba(0,0,0,.56) !important;
+}
+
+.directory__text {
+    font-size: 16px;
+    color: rgba(0,0,0,.92);
+    text-decoration: none !important;
+}
+
+.directory__text:hover {
+    color: rgba(0,0,0,.92) !important;
+}
+
+/*Footer
+================*/
+
+.footer {
+    background-color: #353535;
+    margin-top: 15px;
+}
+
+.footer__title {
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0 0 8px;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.footer__text {
+    font-size: 14px;
+    color: #999;
+    text-decoration: none !important;
+
+    transition: .2s linear;
+}
+
+.footer__text:hover {
+    color: #ea2222 !important;
+}
+
+div.mr-5.footer__text {
+    color: #999 !important;
+}
+
+/*Burger Menu
+================*/
+
+.burger__menu {
+    content: "";
+    width: 20px;
+    height: 1px;
+    background-color: #000;
+
+}
+
+
+/*Media
+============*/
+
+@media (max-width: 576px) {
+    .row.pl-3 {
+        display: none;
+    }
+
+    .header__link01 {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .header__link.col i {
+        display: none;
+    }
+
+    .section__content.w-75 {
+        width: 100% !important;
+    }
+
+    .header.bg-light.pt-3.pb-3.mb-3 {
+        display: none;
+    }
+
+    .header__item2.d-flex.flex-row.pb-3 {
+        display: none !important;
+    }
+
+    .directory__text {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 992px) {
+    .section__inner {
+        display: none;
+    }
+
+    .container.d-flex.pt-3.justify-content-between {
+        max-width: 100%;
+    }
+
+    .container {
+        max-width: 100% !important;
+    }
+
+    .header__link.col {
+        font-size: 15px !important;
+    }
+
+    .header__logo.mr-5 {
+        margin-right: 15px !important;
+    }
+
+    .nav__link.mr-4.text-body {
+        font-size: 14px !important;
+    }
+
+    .footer__item.pl-3.d-flex.mt-4.pb-4.border-bottom.border-dark {
+        flex-wrap: wrap;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

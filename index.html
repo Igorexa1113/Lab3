@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>03-laba</title>
+    <link rel="stylesheet" href="src/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body>
+
+<!--Sprite-->
+<svg style="display: none;">
+    <symbol id="Comparison" viewBox="0 0 480 480">
+        <g>
+    <g>
+        <path d="M472,0H8C3.582,0,0,3.582,0,8v464c0,4.418,3.582,8,8,8h464c4.418,0,8-3.582,8-8V8C480,3.582,476.418,0,472,0z M464,464H16
+            V80h448V464z M464,64H16V16h448V64z"/>
+    </g>
+</g>
+<g>
+    <g>
+        <rect x="32" y="32" width="24" height="16"/>
+    </g>
+</g>
+<g>
+    <g>
+        <rect x="72" y="32" width="24" height="16"/>
+    </g>
+</g>
+<g>
+    <g>
+        <path d="M120,112H56c-4.418,0-8,3.582-8,8v64c0,4.418,3.582,8,8,8h64c4.418,0,8-3.582,8-8v-64C128,115.582,124.418,112,120,112z
+             M112,176H64v-48h48V176z"/>
+    </g>
+</g>
+<g>
+    <g>
+        <path d="M120,232H56c-4.418,0-8,3.582-8,8v64c0,4.418,3.582,8,8,8h64c4.418,0,8-3.582,8-8v-64C128,235.582,124.418,232,120,232z
+             M112,296H64v-48h48V296z"/>
+    </g>
+</g>
+<g>
+    <g>
+        <path d="M120,352H56c-4.418,0-8,3.582-8,8v64c0,4.418,3.582,8,8,8h64c4.418,0,8-3.582,8-8v-64C128,355.582,124.418,352,120,352z
+             M112,416H64v-48h48V416z"/>
+    </g>
+</g>
+<g>
+    <g>
+        <rect x="144" y="136" width="16" height="16"/>
+    </g>
+</g>
+<g>
+    <g>
+        <path d="M285.656,138.344l-32-32l-11.312,11.312L260.688,136H176v16h84.688l-18.344,18.344l11.312,11.312l32-32
+            C288.779,146.532,288.779,141.468,285.656,138.344z"/>
+    </g>
+</g>
+<g>
+    <g>
+        <rect x="144" y="264" width="16" height="16"/>
+    </g>
+</g>
+<g>
+    <g>
+        <path d="M437.656,266.344l-32-32l-11.312,11.312L412.688,264H176v16h236.688l-18.344,18.344l11.312,11.312l32-32
+            C440.779,274.532,440.779,269.468,437.656,266.344z"/>
+    </g>
+</g>
+<g>
+    <g>
+        <rect x="144" y="392" width="16" height="16"/>
+    </g>
+</g>
+<g>
+    <g>
+        <path d="M357.656,394.344l-32-32l-11.312,11.312L332.688,392H176v16h156.688l-18.344,18.344l11.312,11.312l32-32
+            C360.779,402.532,360.779,397.468,357.656,394.344z"/>
+    </g>
+</g>
+    </symbol>
+    <symbol id="Favorites" viewBox="0 0 471.701 471.701">
+        <g>
+            <path d="M433.601,67.001c-24.7-24.7-57.4-38.2-92.3-38.2s-67.7,13.6-92.4,38.3l-12.9,12.9l-13.1-13.1
+            c-24.7-24.7-57.6-38.4-92.5-38.4c-34.8,0-67.6,13.6-92.2,38.2c-24.7,24.7-38.3,57.5-38.2,92.4c0,34.9,13.7,67.6,38.4,92.3
+            l187.8,187.8c2.6,2.6,6.1,4,9.5,4c3.4,0,6.9-1.3,9.5-3.9l188.2-187.5c24.7-24.7,38.3-57.5,38.3-92.4
+            C471.801,124.501,458.301,91.701,433.601,67.001z M414.401,232.701l-178.7,178l-178.3-178.3c-19.6-19.6-30.4-45.6-30.4-73.3
+            s10.7-53.7,30.3-73.2c19.5-19.5,45.5-30.3,73.1-30.3c27.7,0,53.8,10.8,73.4,30.4l22.6,22.6c5.3,5.3,13.8,5.3,19.1,0l22.4-22.4
+            c19.6-19.6,45.7-30.4,73.3-30.4c27.6,0,53.6,10.8,73.2,30.3c19.6,19.6,30.3,45.6,30.3,73.3
+            C444.801,187.101,434.001,213.101,414.401,232.701z"/>
+        </g>
+    </symbol>
+    <symbol id="Subscriptions" viewBox="0 0 511.626 511.626">
+        <g>
+            <path d="M49.106,178.729c6.472,4.567,25.981,18.131,58.528,40.685c32.548,22.554,57.482,39.92,74.803,52.099
+                c1.903,1.335,5.946,4.237,12.131,8.71c6.186,4.476,11.326,8.093,15.416,10.852c4.093,2.758,9.041,5.852,14.849,9.277
+                c5.806,3.422,11.279,5.996,16.418,7.7c5.14,1.718,9.898,2.569,14.275,2.569h0.287h0.288c4.377,0,9.137-0.852,14.277-2.569
+                c5.137-1.704,10.615-4.281,16.416-7.7c5.804-3.429,10.752-6.52,14.845-9.277c4.093-2.759,9.229-6.376,15.417-10.852
+                c6.184-4.477,10.232-7.375,12.135-8.71c17.508-12.179,62.051-43.11,133.615-92.79c13.894-9.703,25.502-21.411,34.827-35.116
+                c9.332-13.699,13.993-28.07,13.993-43.105c0-12.564-4.523-23.319-13.565-32.264c-9.041-8.947-19.749-13.418-32.117-13.418H45.679
+                c-14.655,0-25.933,4.948-33.832,14.844C3.949,79.562,0,91.934,0,106.779c0,11.991,5.236,24.985,15.703,38.974
+                C26.169,159.743,37.307,170.736,49.106,178.729z"/>
+            <path d="M483.072,209.275c-62.424,42.251-109.824,75.087-142.177,98.501c-10.849,7.991-19.65,14.229-26.409,18.699
+                c-6.759,4.473-15.748,9.041-26.98,13.702c-11.228,4.668-21.692,6.995-31.401,6.995h-0.291h-0.287
+                c-9.707,0-20.177-2.327-31.405-6.995c-11.228-4.661-20.223-9.229-26.98-13.702c-6.755-4.47-15.559-10.708-26.407-18.699
+                c-25.697-18.842-72.995-51.68-141.896-98.501C17.987,202.047,8.375,193.762,0,184.437v226.685c0,12.57,4.471,23.319,13.418,32.265
+                c8.945,8.949,19.701,13.422,32.264,13.422h420.266c12.56,0,23.315-4.473,32.261-13.422c8.949-8.949,13.418-19.694,13.418-32.265
+                V184.437C503.441,193.569,493.927,201.854,483.072,209.275z"/>
+        </g>
+    </symbol>
+    <symbol id="LogIn" viewBox="0 0 512 512">
+        <g>
+            <path d="M448,0H192c-8.832,0-16,7.168-16,16v160h32V32h224v448H208V336h-32v160c0,8.832,7.168,16,16,16h256
+            c8.832,0,16-7.168,16-16V16C464,7.168,456.832,0,448,0z"/>
+            <path d="M363.312,244.688l-96-96l-22.624,22.624L313.376,240H48v32h265.376l-68.688,68.688l22.624,22.624l96-96
+            C369.568,261.056,369.568,250.944,363.312,244.688z"/>
+        </g>
+    </symbol>
+</svg>
+
+<header class="header" >
+    <div class="container d-flex pt-3 justify-content-between">
+        <div class="header__item d-flex flex-row pb-3">
+           <a href="#" class="header__logo mr-5"><img src="images/header__logo.png" alt=""></a>
+           <a href="#" class="header__link01">Ростов-на-Дону</a>
+        </div>
+        <div class="header__item2 d-flex flex-row pb-3">
+          <div class="header__icon d-flex mr-3">
+              <a href="#"><svg class="icon__header mr-3"><use xlink:href="#Comparison"></use></svg></a>
+              <a href="#"><svg class="icon__header mr-3"><use xlink:href="#Favorites"></use></svg></a>
+              <a href="#"><svg class="icon__header mr-3"><use xlink:href="#Subscriptions"></use></svg></a>
+          </div>
+           <button type="button" class="header__btn btn btn-success mr-3">Новое объявление</button>
+           <button type="button" class="btn__login btn btn-outline-*"><svg class="icon__LogIn"><use xlink:href="#LogIn"></use></svg>Войти</button>
+        </div>
+    </div>
+    <div class="header bg-light pt-3 pb-3 mb-3">
+       <div class="container">
+            <div class="nav__menu d-flex justify-content-between">
+               <div class="nav__item">
+                    <a href="#" class="nav__link mr-4 text-body">Продажа</a>
+                    <a href="#" class="nav__link mr-4 text-body">Аренда</a>
+                    <a href="#" class="nav__link mr-4 text-body">Новостройки</a>
+                    <a href="#" class="nav__link mr-4 text-body">Коммерческая</a>
+                    <a href="#" class="nav__link mr-4 text-body">Агенствам</a>
+                    <a href="#" class="nav__link mr-4 text-body">ПИК</a>
+                    <a href="#" class="nav__link mr-4 text-body">Еще</a>
+                </div>
+                <div class="nav__item">
+                    <a href="#" class="nav__link text-body">Профпоиск</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="section text-light">
+    <div class="container">
+        <div class="section__inner pt-5 pb-5 text-center mb-5 bg-dark">
+            <h1 class="section__title mb-5"><b>Недвижимость в Ростове-на-Дону</b></h1>
+            <div class="row d-flex justify-content-center mb-4 pt-5">
+                <div class="col-2 pl-0 pr-0">
+                    <select class="form-control">
+                        <option>Купить квартиру</option>
+                        <option>Снять участок</option>
+                        <option>Купить гараж</option>
+                        <option>Снять комнату</option>
+                        <option>Купить дом</option>
+                    </select>
+                </div>
+                <div class="col-1 pl-0 pr-0">
+                    <input type="text" class="form-control" placeholder="Цена от                   --">
+                </div>
+                <div class="col-1 pl-0 pr-0">
+                    <input type="text" class="form-control" placeholder="до">
+                </div>
+                <div class="col-1 pl-0 pr-0">
+                    <select class="form-control">
+                        <option>За всё</option>
+                        <option>За м*м</option>
+                    </select>
+                </div>
+                <div class="col-4 pl-0 pr-0 position-relative">
+                    <input type="text" class="form-control" placeholder="Адрес или ЖК"><a class="position-absolute" href="#">Район</a>
+                </div>
+            </div>
+
+            <div class="section__btns d-flex justify-content-between w-75 mx-auto mb-5">
+                <button type="button" class="btn btn-dark rounded" disabled>Вы ничего не искали раннее</button>
+                <div class="btns__item">
+                    <button type="button" class="btn btn-light rounded mr-3">На карте</button>
+                    <button type="button" class="btn btn-warning rounded">Показать объявления</button>
+                </div>
+            </div>
+        </div>
+
+        <section class="section text-body">
+            <div class="container">
+                <div class="section__content w-75">
+                   <div class="section__buy mb-5">
+                    <h4 class="section__title mb-4"><b>Купить квартиру</b></h4>
+                    <div class="row">
+                        <a href="#" class="header__link col mb-3 d-flex justify-content-between"><em>Студии</em> <i>1 425</i></a>
+                        <a href="#" class="header__link col mb-3 d-flex justify-content-between"><em>2-комнатные</em> <i>14 350</i></a>
+                        <a href="#" class="header__link col mb-3 d-flex justify-content-between"><em>Без посредников</em> <i>286</i></a>
+                        <div class="w-100"></div>
+                        <a href="#" class="header__link col mb-3 d-flex justify-content-between"><em>1-комнатные</em> <i>16 669</i></a>
+                        <a href="#" class="header__link col mb-3 d-flex justify-content-between"><em>3-комнатные</em> <i>10 126</i></a>
+                        <a href="#" class="header__link col mb-3 d-flex justify-content-between"><em>Комнаты в квартире</em> <i>1 832</i></a>
+                    </div>
+                  </div>
+
+                    <div class="section__rent row mb-5">
+                        <div class="rent__item col-6 border-bottom pb-3 border-dark-50">
+                            <img src="images/bg__rent01.jpg" alt="" class="rent__img mb-3">
+                            <h4 class="section__title mb-4"><b>Снять квартиру</b></h4>
+                            <div class="rent__link d-flex">
+                                <div class="mb-2"><a href="#" class="header__link col pl-0"><em>На длительный срок</em> <i>2 487</i></a></div>
+                                <div class="mb-2"><a href="#" class="header__link col pl-0"><em>Студии</em> <i>132</i></a></div>
+                                <div class="mb-2"><a href="#" class="header__link col pl-0"><em>1-комнатные</em> <i>1 483</i></a></div>
+                                <div class="mb-2"><a href="#" class="header__link col pl-0"><em>2-комнатные</em> <i>873</i></a></div>
+                                <div class="mb-2"><a href="#" class="header__link col pl-0"><em>Без посредников</em> <i>131</i></a></div>
+                                <div class="mb-2"><a href="#" class="header__link col pl-0"><em>Комнаты на длительный срок</em> <i>104</i></a></div>
+                            </div>
+                        </div>
+                        <div class="rent__item col-6 border-bottom pb-3 border-dark-50">
+                            <img src="images/bg__rent02.jpg" alt="" class="rent__img mb-3">
+                            <h4 class="section__title mb-4"><b>Снять посуточно</b></h4>
+                            <div class="rent__link d-flex">
+                                <div class="mb-2"><a href="#" class="header__link col pl-0"><em>Квартиры</em> <i>332</i></a></div>
+                                <div class="mb-2"><a href="#" class="header__link col pl-0"><em>Комнаты</em> <i>10</i></a></div>
+                                <div class="mb-2"><a href="#" class="header__link col pl-0"><em>Дома</em> <i>12</i></a></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section__rent row mb-5">
+                        <div class="rent__item col-6 border-bottom pb-3 border-dark-50">
+                            <img src="images/bg__rent03.jpg" alt="" class="rent__img mb-3">
+                            <h4 class="section__title mb-4"><b>Коммерческая недвижимость</b></h4>
+                            <div class="rent__link d-flex">
+                                <div class="mb-2"><a href="#" class="header__link col pl-0"><em>Купить офис</em> <i>363</i></a></div>
+                                <div class="mb-2"><a href="#" class="header__link col pl-0"><em>Купить помещение</em> <i>803</i></a></div>
+                                <div class="mb-2"><a href="#" class="header__link col pl-0"><em>Аренда офиса</em> <i>850</i></a></div>
+                                <div class="mb-2"><a href="#" class="header__link col pl-0"><em>Аренда помещения</em> <i>986</i></a></div>
+                                <div class="mb-2"><a href="#" class="header__link col pl-0"><em>Аренда склада</em> <i>333</i></a></div>
+                            </div>
+                        </div>
+                        <div class="rent__item col-6 border-bottom pb-3 border-dark-50">
+                            <img src="images/bg__rent04.jpg" alt="" class="rent__img mb-3">
+                            <h4 class="section__title mb-4"><b>Загородная недвижимость</b></h4>
+                            <div class="rent__link d-flex">
+                                <div class="mb-2"><a href="#" class="header__link col pl-0"><em>Купить дом</em> <i>9 558</i></a></div>
+                                <div class="mb-2"><a href="#" class="header__link col pl-0"><em>Купить таунхаус</em> <i>143</i></a></div>
+                                <div class="mb-2"><a href="#" class="header__link col pl-0"><em>Купить участок</em> <i>2 864</i></a></div>
+                                <div class="mb-2"><a href="#" class="header__link col pl-0"><em>Снять дом надолго</em> <i>118</i></a></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section__directory">
+                        <div class="directory__inner d-flex justify-content-between">
+                            <h4 class="section__title mb-4"><b>Справочник недвижимости</b></h4>
+                            <div class="directory__btn">
+                                <button type="button" class="btn btn-light border">|</button>
+                                <button type="button" class="btn btn-light border">|</button>
+                            </div>
+                        </div>
+                        <div class="directory_item">
+                            <div class="row mb-4">
+                                <div class="col-4 ">
+                                    <div class="directory__photo mb-1">
+                                        <a href="#"><img src="images/slider__img01.jpg" alt="" class="directory__img"></a>
+                                    </div>
+                                    <div class="mb-2"><a href="#" class="directory__title">Аренда</a></div>
+                                    <div><a href="#" class="directory__text">За сколько дней можно сдать квартиру в аренду в Москве. Карта самых популярных районов</a></div>
+                                </div>
+                                <div class="col-4 ">
+                                    <div class="directory__photo mb-1">
+                                        <a href="#"><img src="images/slider__img02.jpg" alt="" class="directory__img"></a>
+                                    </div>
+                                    <div class="mb-2"><a href="#" class="directory__title">Вторичное жилье</a></div>
+                                    <div><a href="#" class="directory__text">Свободный или альтернативный тип сделки</a></div>
+                                </div>
+                                <div class="col-4 ">
+                                    <div class="directory__photo mb-1">
+                                        <a href="#"><img src="images/slider__img03.jpg" alt="" class="directory__img"></a>
+                                    </div>
+                                    <div class="mb-2"><a href="#" class="directory__title">Новостройки</a></div>
+                                    <div><a href="#" class="directory__text">Льготные ипотечные программы - кому и как поможет госудраство</a></div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-dark btn-block border">Все статьи</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </div>
+</section>
+
+<footer class="footer container-fluid pb-5">
+   <div class="container pt-4 ">
+        <div class="row pl-3">
+            <div class="col-3 pb-4 border-bottom border-dark">
+                <h4 class="footer__title">В Ростове-на-Дону</h4>
+                <div class="rent__link d-flex">
+                    <div class="mb-1"><a href="#" class="footer__text col pl-0">В новостройке</a></div>
+                    <div class="mb-1"><a href="#" class="footer__text col pl-0">Студии</a></div>
+                    <div class="mb-1"><a href="#" class="footer__text col pl-0">Однокомнатные</a></div>
+                    <div class="mb-1"><a href="#" class="footer__text col pl-0">Двухкомнатные</a></div>
+                    <div class="mb-1"><a href="#" class="footer__text col pl-0">Трехкомнатные</a></div>
+                    <div class="mb-1"><a href="#" class="footer__text col pl-0">Четырехкомнатыне и более</a></div>
+                    <div class="mb-1"><a href="#" class="footer__text col pl-0 text-warning">Все разделы</a></div>
+                </div>
+            </div>
+            <div class="col-2 pb-4 border-bottom border-dark">
+                <h4 class="footer__title">В районе</h4>
+                <div class="rent__link d-flex">
+                    <div class="mb-1"><a href="#" class="footer__text col pl-0">1-й Западные Ворота</a></div>
+                    <div class="mb-1"><a href="#" class="footer__text col pl-0">1-й квартал</a></div>
+                    <div class="mb-1"><a href="#" class="footer__text col pl-0">2-й квартал</a></div>
+                    <div class="mb-1"><a href="#" class="footer__text col pl-0">3-й Западные Ворота</a></div>
+                    <div class="mb-1"><a href="#" class="footer__text col pl-0">Автосборочный</a></div>
+                    <div class="mb-1"><a href="#" class="footer__text col pl-0">Александровка</a></div>
+                    <div class="mb-1"><a href="#" class="footer__text col pl-0 text-warning">Все районы</a></div>
+                </div>
+            </div>
+            <div class="col-4 pb-4 border-bottom border-dark">
+                <h4 class="footer__title">В городском округе Ростов-на-Дону</h4>
+                <div class="rent__link d-flex">
+                    <div class="mb-1"><a href="#" class="footer__text col pl-0">Ростов-на-Дону</a></div>
+                </div>
+            </div>
+            <div class="col-3 pb-4 border-bottom border-dark">
+                <h4 class="footer__title">В России</h4>
+                <div class="rent__link d-flex">
+                    <div class="mb-1"><a href="#" class="footer__text col pl-0">Адыгея</a></div>
+                    <div class="mb-1"><a href="#" class="footer__text col pl-0">Алтай</a></div>
+                    <div class="mb-1"><a href="#" class="footer__text col pl-0">Алтайский край</a></div>
+                    <div class="mb-1"><a href="#" class="footer__text col pl-0">Амурская область</a></div>
+                    <div class="mb-1"><a href="#" class="footer__text col pl-0">Архангельская область</a></div>
+                    <div class="mb-1"><a href="#" class="footer__text col pl-0">Астраханская область</a></div>
+                    <div class="mb-1"><a href="#" class="footer__text col pl-0 text-warning">Все регионы</a></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer__item pl-3 d-flex mt-4 pb-4 border-bottom border-dark">
+            <div class="mr-5"><a href="#" class="footer__text col pl-0">Вся недвижимость</a></div>
+            <div class="mr-5"><a href="#" class="footer__text col pl-0">Обратная связь</a></div>
+            <div class="mr-5"><a href="#" class="footer__text col pl-0">Реклама</a></div>
+            <div class="mr-5"><a href="#" class="footer__text col pl-0">Пользовательское соглашение</a></div>
+            <div class="mr-5"><a href="#" class="footer__text col pl-0">Помощь</a></div>
+        </div>
+
+        <div class="footer__item pl-3 d-flex mt-4 pb-4 border-bottom border-dark">
+            <div class="mr-5 footer__text">Яндекс.Недвижимость — аренда и продажа недвижимости в Ростове-на-Дону: поможем сдать, снять, продать или купить квартиру или другое жилье.</div>
+        </div>
+
+        <div class="footer__item pl-3 d-flex mt-4 justify-content-between">
+            <div class=""><a href="#" class="footer__text col pl-0">Мобильная версия</a></div>
+            <div class="mr-5 footer__text">© 20xx–20xx ООО «xxxxxxxxxxxxxxxxx»</div>
+        </div>
+
+    </div>
+</footer>
+
+</body>
+</html>
